@@ -9,7 +9,7 @@ info:
 
 components:
   schemas:
-    Note:
+    TMFNote:
       description: A note is a text that can be attached to an entity.
       externalDocs:
         url: https://datamodel.tmforum.org/en/latest/Common/Note
@@ -52,3 +52,16 @@ components:
               items:
                 $ref: "./RelatedEntity.openapi.yaml#/components/schemas/RelatedEntity"
               readOnly: true
+    TroubleTicketNote:
+      allOf:
+        - $ref: "#/components/schemas/TMFNote"
+        - properties:
+            relatedEntity:
+              description: The entities related to the attachment. This property has to be overriden in the derived class.
+              type: object
+      discriminator:
+        propertyName: "@baseType"
+        mapping:
+          - AnomalieAdresseNote:
+      required:
+        - "@baseType"
