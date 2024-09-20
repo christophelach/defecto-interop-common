@@ -79,21 +79,29 @@ components:
           description: Describes the subject of the event in the context of the event producer (identified by source).
           example: mynewfile.jpg
           minLength: 1
-        # data:
-        #   oneOf:
-        #     - type: string
-        #     - type: object
-        #     - type: array
-        #     - type: number
-        #     - type: boolean
-        #     - type: integer
-        #   nullable: true
-        #   description: The event payload.
-        #   example: '{"hello": "world"}'
-        # data_base64:
-        #   type: string
-        #   nullable: true
-        #   description: Base64 encoded event payload.
-        #     Must adhere to [RFC 4648](https://datatracker.ietf.org/doc/html/rfc4648).
-        #   example: eyJoZWxsbyI6ICJ3b3JsZCJ9
-        #   minLength: 1
+    TroubleTicketEvent:
+      allOf:
+        - $ref: "#/components/schemas/CloudEvent"
+        - properties:
+            subject:
+              description: Identifiant unique de l'anomalie.
+              format: uuid
+              type: string
+            datacontenttype:
+              default: application/json
+              example: application/json
+              type: string
+      discriminator:
+        propertyName: "@baseType"
+      required:
+        - subject
+        - time
+      example:
+        datacontenttype: application/json
+        subject: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        specversion: "1.0"
+        source: https://github.com/cloudevents
+        id: A234-1234-1234
+        time: 2018-04-05T17:31:00Z
+        type: type
+        dataschema: http://cloudevents.io/schema.json
