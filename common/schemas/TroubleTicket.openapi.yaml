@@ -134,6 +134,9 @@ components:
               type: object
       discriminator:
         propertyName: "@baseType"
+        mapping:
+          AnomalieAdresse:
+            $ref: "https://raw.githubusercontent.com/christophelach/defecto-interop-anomalieAdresse/generic-troubleTicket-model-for-codeGen-compatibility/openapi.yaml#/components/schemas/AnomalieAdresse"
       required:
         - "@baseType"
         - "@type"
