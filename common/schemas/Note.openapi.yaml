@@ -56,12 +56,18 @@ components:
       allOf:
         - $ref: "#/components/schemas/TMFNote"
         - properties:
+            "@type":
+              type: string
+              default: "TroubleTicketNote"
+              example: "TroubleTicketNote"
+            "@baseType":
+              type: string
+              default: "TroubleTicketNote"
+              example: "TroubleTicketNote"
             relatedEntity:
               description: The entities related to the attachment. This property has to be overriden in the derived class.
               type: object
       discriminator:
         propertyName: "@baseType"
-        mapping:
-          - AnomalieAdresseNote:
       required:
         - "@baseType"

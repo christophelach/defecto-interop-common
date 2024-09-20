@@ -9,7 +9,7 @@ info:
 
 components:
   schemas:
-    Attachment:
+    TMFAttachment:
       description: An attachment is a file that is attached to an entity.
       externalDocs:
         url: https://datamodel.tmforum.org/en/latest/Common/EntityAttachment
@@ -80,3 +80,30 @@ components:
               type: string
               readOnly: true
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
+    TroubleTicketAttachment:
+      allOf:
+        - $ref: "#/components/schemas/TMFAttachment"
+        - properties:
+            relatedEntity:
+              description: The entities related to the attachment. This property has to be overriden in the derived class.
+              type: object
+            "@baseType":
+              type: string
+              example: "TroubleTicketAttachment"
+            "@type":
+              type: string
+              example: "TroubleTicketAttachment"
+            mimeType:
+              description: The mime type of the attachment. This property has to be overriden in the derived class.
+              type: object
+            status:
+              description: The status of the attachment.
+              type: string
+              enum:
+                - PENDING
+                - VALIDATED
+                - REJECTED
+      discriminator:
+        propertyName: "@baseType"
+      required:
+        - "@baseType"
