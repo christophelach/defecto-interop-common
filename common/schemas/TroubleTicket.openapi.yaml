@@ -9,7 +9,7 @@ info:
 
 components:
   schemas:
-    TroubleTicket:
+    TMFTroubleTicket:
       description: A trouble ticket is a record of an issue
         that is created, tracked, and managed
         by a trouble ticket management system
@@ -94,3 +94,48 @@ components:
                 e.g. incident, complain, request, etc.
               type: string
               nullable: true
+    TroubleTicket:
+      allOf:
+        - $ref: "#/components/schemas/TMFTroubleTicket"
+        - properties:
+            code_oi:
+              description: Code OI de l'ARCOM
+              $ref: https://raw.githubusercontent.com/before-interop/common/v1/common/schemas/Interop.openapi.yaml#/components/schemas/CodeOperateurArcep
+            code_oc:
+              description: Code OC de l'ARCOM
+              $ref: https://raw.githubusercontent.com/before-interop/common/v1/common/schemas/Interop.openapi.yaml#/components/schemas/CodeOperateurArcep
+            status:
+              description: The condition of an troubleticket, identified through a code. This property has to be overriden in the derived classes as string or enum
+              type: object
+            relatedEntity:
+              description: The related party(ies) that are associated to the ticket. This property has to be overriden in the derived classes as an array or specific entity.
+              type: object
+            priority:
+              description: |
+                The priority of the trouble ticket and how quickly the issue should be resolved.
+                Example: Critical, High, Medium, Low.
+                The value is set by the ticket management system considering the severity, ticket type etc...
+                This property has to be overriden in the derived classes as string or enum
+              type: object
+            severity:
+              description: |
+                The severity of the issue.
+                Indicate the implication of the issue on the expected functionality
+                e.g. of a system, application, service etc..
+
+                Severity values can be for example : Critical, Major, Minor
+                This property has to be overriden in the derived classes as string or enum
+              type: object
+            ticketType:
+              description: |
+                The type of the trouble ticket. e.g. incident, complain, request,\
+                \ etc.
+                This property has to be overriden in the derived classes as string or enum
+              type: object
+      discriminator:
+        propertyName: "@baseType"
+        mapping:
+          AnomalieAdresse: "#/components/schemas/TroubleTicketAnomalie"
+      required:
+        - "@baseType"
+        - "@type"
