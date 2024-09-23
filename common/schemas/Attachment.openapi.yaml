@@ -102,5 +102,3 @@ components:
                 - REJECTED
       discriminator:
         propertyName: "@baseType"
-      required:
-        - "@baseType"
