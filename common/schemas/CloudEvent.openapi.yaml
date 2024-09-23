@@ -84,7 +84,7 @@ components:
         - $ref: "#/components/schemas/CloudEvent"
         - properties:
             subject:
-              description: Identifiant unique de l'anomalie.
+              description: Identifiant unique du troubleticket.
               format: uuid
               type: string
             datacontenttype:
