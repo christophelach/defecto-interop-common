@@ -110,6 +110,9 @@ components:
             relatedEntity:
               description: The related party(ies) that are associated to the ticket. This property has to be overriden in the derived classes as an array or specific entity.
               type: object
+            relatedParty:
+              description: The related party(ies) that are associated to the ticket. This property has to be overriden in the derived classes as an array or specific entity.
+              type: object
             priority:
               description: |
                 The priority of the trouble ticket and how quickly the issue should be resolved.
