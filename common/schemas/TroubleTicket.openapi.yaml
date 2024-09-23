@@ -135,7 +135,7 @@ components:
       discriminator:
         propertyName: "@baseType"
         mapping:
-          AnomalieTroubleTicket: "#/components/schemas/TroubleTicketAnomalieAdresse"
+          AnomalieTroubleTicket: TroubleTicketAnomalieAdresse
       required:
         - "@baseType"
         - "@type"
