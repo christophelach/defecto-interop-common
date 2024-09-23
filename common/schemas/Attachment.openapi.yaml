@@ -87,9 +87,6 @@ components:
             relatedEntity:
               description: The entities related to the attachment. This property has to be overriden in the derived class.
               type: object
-            "@baseType":
-              type: string
-              example: "TroubleTicketAttachment"
             "@type":
               type: string
               example: "TroubleTicketAttachment"
