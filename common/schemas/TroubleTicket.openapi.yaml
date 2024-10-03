@@ -140,3 +140,5 @@ components:
       required:
         - "@baseType"
         - "@type"
+        - code_oc
+        - code_oi
