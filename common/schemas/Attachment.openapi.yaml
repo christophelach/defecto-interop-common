@@ -16,12 +16,7 @@ components:
         url: https://datamodel.tmforum.org/en/latest/Common/EntityAttachment
       allOf:
         - $ref: "./StatusEntity.openapi.yaml#/components/schemas/StatusEntity"
-        - discriminator:
-            propertyName: "@type"
-            mapping:
-              Attachment: "#/components/schemas/Attachment"
-              AttachmentMultipart: "#/components/schemas/AttachmentMultipart"
-          required:
+        - required:
             - name
             - "@type"
           properties:
@@ -97,6 +92,11 @@ components:
               description: The SHA256 hash of the attachment.
               type: string
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
+      discriminator:
+        propertyName: "@type"
+        mapping:
+          Attachment: "#/components/schemas/Attachment"
+          AttachmentMultipart: "#/components/schemas/AttachmentMultipart"
 
     AttachmentFormData:
       required:
