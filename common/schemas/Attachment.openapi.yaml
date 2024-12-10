@@ -116,7 +116,7 @@ components:
 
     AttachmentMultipart:
       allOf:
-        - $ref: "#/components/schemas/Attachment"
+        - $ref: "#/components/schemas/AttachmentRef"
         - required:
             - name
             - uploadExpectedChunks
