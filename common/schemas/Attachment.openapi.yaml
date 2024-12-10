@@ -28,12 +28,9 @@ components:
               description: The mime type of the attachment. This parameter type has to be overriden in child classes.
               type: object
               readOnly: true
-              example: image/jpeg
             status:
-              enum:
-                - UPLOADED
-                - VALIDATED
-                - REJECTED
+              type: object
+              description: The status of the attachment. This parameter type has to be overriden in child classes.
             name:
               description: Name of the attachment.
               type: string
@@ -53,9 +50,7 @@ components:
               readOnly: true
             relatedEntity:
               description: The entities related to the attachment.
-              type: array
-              items:
-                $ref: "./RelatedEntity.openapi.yaml#/components/schemas/RelatedEntity"
+              type: object
               readOnly: true
             relatedParty:
               description: The parties related to the attachment.
