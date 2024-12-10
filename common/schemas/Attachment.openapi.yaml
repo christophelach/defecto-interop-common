@@ -9,7 +9,7 @@ info:
 
 components:
   schemas:
-    AttachmentRef:
+    AttachmentBase:
       description: An attachment is a file that is attached to an entity.
       externalDocs:
         url: https://datamodel.tmforum.org/en/latest/Common/EntityAttachment
@@ -84,7 +84,7 @@ components:
 
     Attachment:
       allOf:
-        - $ref: "#/components/schemas/AttachmentRef"
+        - $ref: "#/components/schemas/AttachmentBase"
         - required:
             - "@type"
           properties:
@@ -116,7 +116,7 @@ components:
 
     AttachmentMultipart:
       allOf:
-        - $ref: "#/components/schemas/AttachmentRef"
+        - $ref: "#/components/schemas/AttachmentBase"
         - required:
             - name
             - uploadExpectedChunks
