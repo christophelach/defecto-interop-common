@@ -9,32 +9,17 @@ info:
 
 components:
   schemas:
-    Attachment:
+    AttachmentRef:
       description: An attachment is a file that is attached to an entity.
-
       externalDocs:
         url: https://datamodel.tmforum.org/en/latest/Common/EntityAttachment
       allOf:
         - $ref: "./StatusEntity.openapi.yaml#/components/schemas/StatusEntity"
-        - required:
-            - name
-            - "@type"
-          properties:
+        - properties:
             id:
               type: string
               format: uuid
               readOnly: true
-            "@type":
-              type: string
-              default: "Attachment"
-              example: "Attachment"
-              description: |
-                Type d'attachement.
-
-                Les valeurs possibles sont:
-
-                * `Attachment`: "#/components/schemas/Attachment"
-                * `AttachmentMultipart`: "#/components/schemas/AttachmentMultipart"
             "@baseType":
               type: string
               default: "Attachment"
@@ -92,11 +77,27 @@ components:
               description: The SHA256 hash of the attachment.
               type: string
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
+          required:
+            - name
       discriminator:
         propertyName: "@type"
         mapping:
           Attachment: "#/components/schemas/Attachment"
           AttachmentMultipart: "#/components/schemas/AttachmentMultipart"
+
+    Attachment:
+      allOf:
+        - $ref: "#/components/schemas/AttachmentRef"
+        - required:
+            - "@type"
+          properties:
+            "@type":
+              type: string
+              default: "Attachment"
+              example: "Attachment"
+              description: |
+                Attachment non multipart.
+              readOnly: true
 
     AttachmentFormData:
       required:
@@ -123,11 +124,11 @@ components:
 
     AttachmentMultipart:
       allOf:
-        - $ref: "#/components/schemas/Attachment"
+        - $ref: "#/components/schemas/AttachmentRef"
         - required:
             - sha256
-            - name
             - uploadExpectedChunks
+            - "@type"
           properties:
             uploadExpectedChunks:
               format: int32
