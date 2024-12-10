@@ -138,6 +138,7 @@ components:
                 - REJECTED
               description: The status of the attachment
             "@type":
+              type: string
               default: AttachmentMultipart
               example: AttachmentMultipart
               readOnly: true
