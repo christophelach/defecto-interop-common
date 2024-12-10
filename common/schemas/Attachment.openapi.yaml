@@ -134,14 +134,11 @@ components:
                 - REJECTED
               description: The status of the attachment
             "@type":
+              type: string
               default: AttachmentMultipart
               example: AttachmentMultipart
               readOnly: true
               description: The type of the attachment
-            sha256:
-              description: The SHA256 hash of the attachment.
-              type: string
-              example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
             uploadChunks:
               readOnly: true
               uniqueItems: true
