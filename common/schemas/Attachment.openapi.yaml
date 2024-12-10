@@ -9,46 +9,28 @@ info:
 
 components:
   schemas:
-    Attachment:
+    AttachmentRef:
       description: An attachment is a file that is attached to an entity.
-
       externalDocs:
         url: https://datamodel.tmforum.org/en/latest/Common/EntityAttachment
       allOf:
         - $ref: "./StatusEntity.openapi.yaml#/components/schemas/StatusEntity"
-        - discriminator:
-            propertyName: "@type"
-            mapping:
-              Attachment: "#/components/schemas/Attachment"
-              AttachmentMultipart: "#/components/schemas/AttachmentMultipart"
-          required:
-            - name
-            - "@type"
-          properties:
+        - properties:
             id:
               type: string
               format: uuid
               readOnly: true
-            "@type":
-              type: string
-              default: "Attachment"
-              example: "Attachment"
-              description: |
-                Type d'attachement.
-
-                Les valeurs possibles sont:
-
-                * `Attachment`: "#/components/schemas/Attachment"
-                * `AttachmentMultipart`: "#/components/schemas/AttachmentMultipart"
             "@baseType":
               type: string
               default: "Attachment"
               example: "Attachment"
+            mimeType:
+              description: The mime type of the attachment. This parameter type has to be overriden in child classes.
+              type: object
+              readOnly: true
             status:
-              enum:
-                - UPLOADED
-                - VALIDATED
-                - REJECTED
+              type: object
+              description: The status of the attachment. This parameter type has to be overriden in child classes.
             name:
               description: Name of the attachment.
               type: string
@@ -57,11 +39,6 @@ components:
               description: Description of the attachment.
               type: string
               example: Image of the product
-            mimeType:
-              description: The mime type of the attachment.
-              type: string
-              readOnly: true
-              example: image/jpeg
             size:
               description: The size of the attachment in bytes.
               type: integer
@@ -73,9 +50,7 @@ components:
               readOnly: true
             relatedEntity:
               description: The entities related to the attachment.
-              type: array
-              items:
-                $ref: "./RelatedEntity.openapi.yaml#/components/schemas/RelatedEntity"
+              type: object
               readOnly: true
             relatedParty:
               description: The parties related to the attachment.
@@ -97,26 +72,44 @@ components:
               description: The SHA256 hash of the attachment.
               type: string
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
+          required:
+            - name
+            - size
+            - sha256
+      discriminator:
+        propertyName: "@type"
+        mapping:
+          Attachment: "#/components/schemas/Attachment"
+          AttachmentMultipart: "#/components/schemas/AttachmentMultipart"
+
+    Attachment:
+      allOf:
+        - $ref: "#/components/schemas/AttachmentRef"
+        - required:
+            - "@type"
+          properties:
+            "@type":
+              type: string
+              default: "Attachment"
+              example: "Attachment"
+              description: |
+                Attachment non multipart.
+              readOnly: true
 
     AttachmentFormData:
       required:
         - file
-        - attachment
       properties:
         file:
           format: binary
           description: The file to upload
           type: string
-        attachment:
-          $ref: "#/components/schemas/Attachment"
 
     AttachmentChunkForm:
-      required:
-        - data
       properties:
         data:
           format: binary
-          description: The file to upload
+          description: The chunk of file to upload
           type: string
         chunk:
           $ref: "#/components/schemas/Chunk"
@@ -125,7 +118,6 @@ components:
       allOf:
         - $ref: "#/components/schemas/Attachment"
         - required:
-            - sha256
             - name
             - uploadExpectedChunks
           properties:
