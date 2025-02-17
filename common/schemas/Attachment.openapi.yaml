@@ -97,13 +97,16 @@ components:
               readOnly: true
 
     AttachmentFormData:
-      required:
-        - file
-      properties:
-        file:
-          format: binary
-          description: The file to upload
-          type: string
+      allOf:
+        - $ref: "#/components/schemas/Attachment"
+        - required:
+          - file
+          - attachment
+          properties:
+            file:
+              format: binary
+              description: The file to upload
+              type: string
 
     AttachmentChunkForm:
       properties:
