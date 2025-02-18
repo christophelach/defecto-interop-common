@@ -98,8 +98,6 @@ components:
             #   default: Attachment
             #   example: Attachment
             #   description: The type of the attachment
-          required:
-            - "@type"
 
     AttachmentFormData:
       required:
