@@ -129,12 +129,12 @@ components:
       allOf:
         - $ref: "#/components/schemas/AttachmentBase"
         - required:
-            - "attachmentType"
+            - attachmentType
             - sha256
             - name
             - uploadExpectedChunks
           properties:
-            "attachmentType":
+            attachmentType:
               type: string
               default: AttachmentMultiPart
             #   example: AttachmentMultiPart
