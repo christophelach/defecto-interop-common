@@ -84,7 +84,7 @@ components:
         propertyName: "@type"
         mapping:
           Attachment: "#/components/schemas/Attachment"
-          AttachmentMultipart: "#/components/schemas/AttachmentMultipart"
+          AttachmentMultiPart: "#/components/schemas/AttachmentMultiPart"
 
     Attachment:
       allOf:
@@ -138,8 +138,8 @@ components:
           properties:
             "@type":
               type: string
-              default: AttachmentMultipart
-              example: AttachmentMultipart
+              default: AttachmentMultiPart
+              example: AttachmentMultiPart
               description: The type of the attachment
             uploadExpectedChunks:
               format: int32
