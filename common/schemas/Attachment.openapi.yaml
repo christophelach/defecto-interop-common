@@ -77,8 +77,8 @@ components:
               description: The SHA256 hash of the attachment.
               type: string
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
-      # discriminator:
-      #   propertyName: "@type"
+      discriminator:
+        propertyName: "@type"
       #   mapping:
       #     Attachment: "#/components/schemas/Attachment"
       #     AttachmentMultiPart: "#/components/schemas/AttachmentMultiPart"
@@ -93,8 +93,10 @@ components:
                 - VALIDATED
                 - REJECTED
               type: string
-            # "@type":
-            #   type: string
+            "@type":
+              type: string
+          required:
+            - "@type"
             #   default: Attachment
             #   example: Attachment
             #   description: The type of the attachment
@@ -131,8 +133,8 @@ components:
             - name
             - uploadExpectedChunks
           properties:
-            # "@type":
-            #   type: string
+            "@type":
+              type: string
             #   default: AttachmentMultiPart
             #   example: AttachmentMultiPart
             #   description: The type of the attachment
