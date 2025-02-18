@@ -27,7 +27,8 @@ components:
               type: string
               default: "Attachment"
               example: "Attachment"
-            status: {}
+            status:
+              type: object
             name:
               description: Name of the attachment.
               type: string
