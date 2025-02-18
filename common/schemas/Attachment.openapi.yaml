@@ -108,11 +108,11 @@ components:
           format: binary
           description: The file to upload
           type: string
-        attachment:
-          $ref: "#/components/schemas/Attachment"
+        # attachment:
+        #   $ref: "#/components/schemas/Attachment"
       required:
         - file
-        - attachment
+        # - attachment
 
     AttachmentChunkForm:
       required:
