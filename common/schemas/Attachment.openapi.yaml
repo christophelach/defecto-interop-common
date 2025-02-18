@@ -103,9 +103,6 @@ components:
             #   description: The type of the attachment
 
     AttachmentFormData:
-      required:
-        - file
-        - attachment
       properties:
         file:
           format: binary
@@ -113,6 +110,9 @@ components:
           type: string
         attachment:
           $ref: "#/components/schemas/Attachment"
+      required:
+        - file
+        - attachment
 
     AttachmentChunkForm:
       required:
