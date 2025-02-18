@@ -96,11 +96,11 @@ components:
                 - VALIDATED
                 - REJECTED
               type: string
-            "@type":
-              type: string
-              default: Attachment
-              example: Attachment
-              description: The type of the attachment
+            # "@type":
+            #   type: string
+            #   default: Attachment
+            #   example: Attachment
+            #   description: The type of the attachment
           required:
             - "@type"
 
@@ -136,11 +136,11 @@ components:
             - name
             - uploadExpectedChunks
           properties:
-            "@type":
-              type: string
-              default: AttachmentMultiPart
-              example: AttachmentMultiPart
-              description: The type of the attachment
+            # "@type":
+            #   type: string
+            #   default: AttachmentMultiPart
+            #   example: AttachmentMultiPart
+            #   description: The type of the attachment
             uploadExpectedChunks:
               format: int32
               type: integer
