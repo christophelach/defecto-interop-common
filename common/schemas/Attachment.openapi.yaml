@@ -93,11 +93,11 @@ components:
                 - VALIDATED
                 - REJECTED
               type: string
-            "@attachmentType":
+            attachmentType:
               type: string
               default: Attachment
           required:
-            - "@attachmentType"
+            - attachmentType
             #   default: Attachment
             #   example: Attachment
             #   description: The type of the attachment
