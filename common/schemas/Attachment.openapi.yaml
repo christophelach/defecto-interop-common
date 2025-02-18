@@ -27,11 +27,8 @@ components:
               type: string
               default: "Attachment"
               example: "Attachment"
-            # status:
-              # enum:
-              #   - UPLOADED
-              #   - VALIDATED
-              #   - REJECTED
+            status:
+              type: object
             name:
               description: Name of the attachment.
               type: string
@@ -40,11 +37,11 @@ components:
               description: Description of the attachment.
               type: string
               example: Image of the product
-            # mimeType:
-            #   description: The mime type of the attachment.
-            #   type: string
-            #   readOnly: true
-            #   example: image/jpeg
+            mimeType:
+              description: The mime type of the attachment.
+              type: object
+              readOnly: true
+              example: image/jpeg
             size:
               description: The size of the attachment in bytes.
               type: integer
