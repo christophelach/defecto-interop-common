@@ -31,7 +31,6 @@ components:
             status:
               type: object
               description: The status of the attachment. This parameter type has to be overriden in child classes.
-              readOnly: true
             name:
               description: Name of the attachment.
               type: string
@@ -134,6 +133,7 @@ components:
                 - VALIDATED
                 - REJECTED
               description: The status of the attachment
+              readonly: true
             "@type":
               type: string
               default: AttachmentMultipart
