@@ -127,7 +127,7 @@ components:
         chunk:
           $ref: "#/components/schemas/Chunk"
 
-    AttachmentMultipart:
+    AttachmentMultiPart:
       allOf:
         - $ref: "#/components/schemas/AttachmentBase"
         - required:
