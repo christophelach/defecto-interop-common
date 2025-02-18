@@ -77,11 +77,11 @@ components:
               description: The SHA256 hash of the attachment.
               type: string
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
-      discriminator:
-        propertyName: "@type"
-        mapping:
-          Attachment: "#/components/schemas/Attachment"
-          AttachmentMultiPart: "#/components/schemas/AttachmentMultiPart"
+      # discriminator:
+      #   propertyName: "@type"
+      #   mapping:
+      #     Attachment: "#/components/schemas/Attachment"
+      #     AttachmentMultiPart: "#/components/schemas/AttachmentMultiPart"
 
     Attachment:
       allOf:
