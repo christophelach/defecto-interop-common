@@ -182,7 +182,6 @@ components:
       allOf:
         - $ref: "#/components/schemas/AttachmentBase"
         - required:
-            - "@type"
             - sha256
             - name
             - size
@@ -214,8 +213,6 @@ components:
       allOf:
         - $ref: "#/components/schemas/AttachmentMultiPart"
         - $ref: "#/components/schemas/SpecialisationPhoto"
-      required:
-        - "@type"
 
     Chunk:
       type: object
