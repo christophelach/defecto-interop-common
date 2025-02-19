@@ -181,11 +181,7 @@ components:
     AttachmentMultiPart:
       allOf:
         - $ref: "#/components/schemas/AttachmentBase"
-        - required:
-            - sha256
-            - name
-            - size
-          properties:
+        - properties:
             uploadExpectedChunks:
               format: int32
               type: integer
@@ -208,6 +204,14 @@ components:
               description: The chunks uploaded
               items:
                 $ref: "#/components/schemas/Chunk"
+            "@type":
+              type: string
+              example: AttachmentMalfaconMultiPart
+          required:
+            - sha256
+            - name
+            - size
+            - "@type"
 
     AttachmentMultiPartPhoto:
       allOf:
