@@ -135,11 +135,6 @@ components:
             - name
             - uploadExpectedChunks
           properties:
-            attachmentType:
-              type: string
-              default: AttachmentMultiPart
-            #   example: AttachmentMultiPart
-            #   description: The type of the attachment
             uploadExpectedChunks:
               format: int32
               type: integer
@@ -155,6 +150,7 @@ components:
               readonly: true
               description: The status of the attachment
             "@type":
+              type: string
               default: AttachmentMultipart
               description: The type of the attachment
             uploadChunks:
