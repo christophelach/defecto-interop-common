@@ -188,13 +188,14 @@ components:
             - "@type"
             - sha256
             - name
-            - uploadExpectedChunks
+            - size
           properties:
             uploadExpectedChunks:
               format: int32
               type: integer
               example: 3
               description: The number of chunks expected to upload
+              readonly: true
             status:
               enum:
                 - UPLOADING
@@ -212,12 +213,13 @@ components:
               items:
                 $ref: "#/components/schemas/Chunk"
 
-    AttachmentMultipartPhoto:
+    AttachmentMultiPartPhoto:
       allOf:
         - $ref: "#/components/schemas/AttachmentMultiPart"
         - $ref: "#/components/schemas/SpecialisationPhoto"
       required:
         - "@type"
+
     Chunk:
       type: object
       required:
