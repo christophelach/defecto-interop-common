@@ -92,7 +92,7 @@ components:
           required:
             - "@type"
 
-    SpecialisationPhoto:
+    SpecialisationImage:
       properties:
         mimeType:
           type: string
@@ -162,10 +162,10 @@ components:
               "ISOSpeedRatings": 3200,
               "DateTimeOriginal": "2019-12-31T23:59:59Z",
             }
-    AttachmentPhoto:
+    AttachmentImage:
       allOf:
         - $ref: "#/components/schemas/Attachment"
-        - $ref: "#/components/schemas/SpecialisationPhoto"
+        - $ref: "#/components/schemas/SpecialisationImage"
       required:
         - "@type"
 
@@ -213,10 +213,10 @@ components:
             - size
             - "@type"
 
-    AttachmentMultiPartPhoto:
+    AttachmentMultiPartImage:
       allOf:
         - $ref: "#/components/schemas/AttachmentMultiPart"
-        - $ref: "#/components/schemas/SpecialisationPhoto"
+        - $ref: "#/components/schemas/SpecialisationImage"
 
     Chunk:
       type: object
