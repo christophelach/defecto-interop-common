@@ -29,7 +29,6 @@ components:
               example: "Attachment"
             status:
               type: object
-              readonly: true
             name:
               description: Name of the attachment.
               type: string
@@ -153,6 +152,7 @@ components:
                 - VALIDATED
                 - REJECTED
               type: string
+              readonly: true
               description: The status of the attachment
             # "@type":
             #   default: AttachmentMultipart
