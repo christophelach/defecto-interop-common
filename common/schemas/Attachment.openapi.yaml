@@ -93,6 +93,7 @@ components:
                 - VALIDATED
                 - REJECTED
               type: string
+              readonly: true
             attachmentType:
               type: string
               default: Attachment
