@@ -79,8 +79,6 @@ components:
       discriminator:
         propertyName: "@type"
 
-
-
     Attachment:
       allOf:
         - $ref: "#/components/schemas/AttachmentBase"
