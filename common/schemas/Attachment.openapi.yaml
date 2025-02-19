@@ -102,15 +102,6 @@ components:
       required:
         - file
 
-    AttachmentChunkForm:
-      required:
-        - chunk
-      properties:
-        data:
-          format: binary
-          description: The file to upload
-          type: string
-
     AttachmentMultiPart:
       allOf:
         - $ref: "#/components/schemas/AttachmentBase"
