@@ -79,6 +79,8 @@ components:
       discriminator:
         propertyName: "@type"
 
+
+
     Attachment:
       allOf:
         - $ref: "#/components/schemas/AttachmentBase"
@@ -89,9 +91,86 @@ components:
                 - VALIDATED
                 - REJECTED
               type: string
-              readonly: true
+              readonly: https://datamodel.tmforum.org/en/latest/Common/EntityAttachment
           required:
             - "@type"
+
+    SpecialisationPhoto:
+      properties:
+        mimeType:
+          type: string
+          enum:
+            - image/jpeg
+            - image/jpg
+            - image/png
+            - image/svg+xml
+        width:
+          description: The width of the image in pixels.
+          type: integer
+          format: int64
+          example: 800
+          readOnly: true
+        height:
+          description: The height of the image in pixels.
+          type: integer
+          format: int64
+          example: 600
+          readOnly: true
+        resolution:
+          description: The resolution of the image in DPI.
+          type: integer
+          format: int64
+          example: 72
+          readOnly: true
+        colorDepth:
+          description: The color depth of the image in bits.
+          type: integer
+          format: int64
+          example: 24
+          readOnly: true
+        thumbnail:
+          description: The thumbnail of the image.
+          type: string
+          format: base64
+          readOnly: true
+        thumbnailWidth:
+          description: The width of the thumbnail in pixels.
+          type: integer
+          format: int64
+          example: 80
+          readOnly: true
+        thumbnailHeight:
+          description: The height of the thumbnail in pixels.
+          type: integer
+          format: int64
+          example: 60
+          readOnly: true
+        geoLocation:
+          description: The geo location of the image.
+          readOnly: true
+          allOf:
+            - $ref: "./GeographicPoint.openapi.yaml#/components/schemas/GeographicPoint"
+        exif:
+          description: The EXIF data of the image.
+          type: object
+          readOnly: true
+          additionalProperties:
+            type: string
+          example:
+            {
+              "Make": "Canon",
+              "Model": "Canon EOS 5D Mark III",
+              "ExposureTime": "1/60",
+              "FNumber": "f/4.0",
+              "ISOSpeedRatings": 3200,
+              "DateTimeOriginal": "2019-12-31T23:59:59Z",
+            }
+    AttachmentPhoto:
+      allOf:
+        - $ref: "#/components/schemas/Attachment"
+        - $ref: "#/components/schemas/SpecialisationPhoto"
+      required:
+        - "@type"
 
     AttachmentFormData:
       properties:
@@ -133,17 +212,18 @@ components:
               items:
                 $ref: "#/components/schemas/Chunk"
 
+    AttachmentMultipartPhoto:
+      allOf:
+        - $ref: "#/components/schemas/AttachmentMultiPart"
+        - $ref: "#/components/schemas/SpecialisationPhoto"
+      required:
+        - "@type"
     Chunk:
       type: object
       required:
-        - index
         - size
         - sha256
       properties:
-        index:
-          format: int32
-          type: integer
-          description: The index of the chunk
         size:
           format: int32
           type: integer
