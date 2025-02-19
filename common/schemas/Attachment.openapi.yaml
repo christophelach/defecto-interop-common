@@ -30,7 +30,6 @@ components:
             status:
               type: object
               description: Status of the attachment. This object has to be redefined in child schemas.
-              readonly: true
             name:
               description: Name of the attachment.
               type: string
@@ -89,7 +88,6 @@ components:
                 - VALIDATED
                 - REJECTED
               type: string
-              readonly: https://datamodel.tmforum.org/en/latest/Common/EntityAttachment
           required:
             - "@type"
 
@@ -193,7 +191,7 @@ components:
               type: integer
               example: 3
               description: The number of chunks expected to upload
-              readonly: true
+              readOnly: true
             status:
               enum:
                 - UPLOADING
@@ -201,7 +199,7 @@ components:
                 - VALIDATED
                 - REJECTED
               type: string
-              readonly: true
+              readOnly: true
               description: The status of the attachment
             uploadChunks:
               readOnly: true
