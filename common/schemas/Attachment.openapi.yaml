@@ -104,15 +104,12 @@ components:
 
     AttachmentChunkForm:
       required:
-        - data
         - chunk
       properties:
         data:
           format: binary
           description: The file to upload
           type: string
-        chunk:
-          $ref: "#/components/schemas/Chunk"
 
     AttachmentMultiPart:
       allOf:
