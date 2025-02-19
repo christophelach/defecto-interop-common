@@ -29,8 +29,8 @@ components:
               example: "Attachment"
             status:
               type: object
-              description: Status of the attachment. This object has to be redefined in child schemas.
-              readOnly: true
+              # description: Status of the attachment. This object has to be redefined in child schemas.
+              # readOnly: true
             name:
               description: Name of the attachment.
               type: string
