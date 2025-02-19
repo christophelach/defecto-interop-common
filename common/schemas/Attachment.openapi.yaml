@@ -105,6 +105,7 @@ components:
     AttachmentChunkForm:
       required:
         - data
+        - chunk
       properties:
         data:
           format: binary
