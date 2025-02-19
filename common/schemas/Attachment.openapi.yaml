@@ -94,9 +94,9 @@ components:
                 - REJECTED
               type: string
               readonly: true
-            "@type":
-              type: string
-              default: Attachment
+            # "@type":
+            #   type: string
+            #   default: Attachment
           required:
             - "@type"
             #   default: Attachment
@@ -149,10 +149,10 @@ components:
               type: string
               readonly: true
               description: The status of the attachment
-            "@type":
-              type: string
-              default: AttachmentMultipart
-              description: The type of the attachment
+            # "@type":
+            #   type: string
+            #   default: AttachmentMultipart
+            #   description: The type of the attachment
             uploadChunks:
               readOnly: true
               uniqueItems: true
