@@ -78,7 +78,7 @@ components:
               type: string
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
       discriminator:
-        propertyName: "attachmentType"
+        propertyName: "@type"
       #   mapping:
       #     Attachment: "#/components/schemas/Attachment"
       #     AttachmentMultiPart: "#/components/schemas/AttachmentMultiPart"
@@ -94,11 +94,11 @@ components:
                 - REJECTED
               type: string
               readonly: true
-            attachmentType:
+            "@type":
               type: string
               default: Attachment
           required:
-            - attachmentType
+            - "@type"
             #   default: Attachment
             #   example: Attachment
             #   description: The type of the attachment
@@ -130,7 +130,7 @@ components:
       allOf:
         - $ref: "#/components/schemas/AttachmentBase"
         - required:
-            - attachmentType
+            - "@type"
             - sha256
             - name
             - uploadExpectedChunks
@@ -154,11 +154,9 @@ components:
               type: string
               readonly: true
               description: The status of the attachment
-            # "@type":
-            #   default: AttachmentMultipart
-            #   example: AttachmentMultipart
-            #   readOnly: true
-            #   description: The type of the attachment
+            "@type":
+              default: AttachmentMultipart
+              description: The type of the attachment
             uploadChunks:
               readOnly: true
               uniqueItems: true
