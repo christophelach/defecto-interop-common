@@ -29,6 +29,8 @@ components:
               example: "Attachment"
             status:
               type: object
+              description: Status of the attachment. This object has to be redefined in child schemas.
+              readonly: true
             name:
               description: Name of the attachment.
               type: string
@@ -51,12 +53,9 @@ components:
               description: Uniform Resource Identifier (URI) of the attachment.
               type: string
               readOnly: true
-            # relatedEntity:
-            #   description: The entities related to the attachment.
-            #   type: array
-            #   items:
-            #     $ref: "./RelatedEntity.openapi.yaml#/components/schemas/RelatedEntity"
-            #   readOnly: true
+            relatedEntity:
+              description: The entities related to the attachment. This object has to be redefined in child schemas.
+              type: object
             relatedParty:
               description: The parties related to the attachment.
               type: array
@@ -79,9 +78,6 @@ components:
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
       discriminator:
         propertyName: "@type"
-      #   mapping:
-      #     Attachment: "#/components/schemas/Attachment"
-      #     AttachmentMultiPart: "#/components/schemas/AttachmentMultiPart"
 
     Attachment:
       allOf:
@@ -94,14 +90,8 @@ components:
                 - REJECTED
               type: string
               readonly: true
-            # "@type":
-            #   type: string
-            #   default: Attachment
           required:
             - "@type"
-            #   default: Attachment
-            #   example: Attachment
-            #   description: The type of the attachment
 
     AttachmentFormData:
       properties:
@@ -109,11 +99,8 @@ components:
           format: binary
           description: The file to upload
           type: string
-        # attachment:
-        #   $ref: "#/components/schemas/Attachment"
       required:
         - file
-        # - attachment
 
     AttachmentChunkForm:
       required:
@@ -149,10 +136,6 @@ components:
               type: string
               readonly: true
               description: The status of the attachment
-            # "@type":
-            #   type: string
-            #   default: AttachmentMultipart
-            #   description: The type of the attachment
             uploadChunks:
               readOnly: true
               uniqueItems: true
