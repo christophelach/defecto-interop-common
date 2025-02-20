@@ -80,17 +80,26 @@ components:
       # discriminator:
       #   propertyName: "@type"
 
-    Attachment:
-      allOf:
-        - $ref: "#/components/schemas/AttachmentBase"
-        - properties:
-            status:
-              enum:
-                - PENDING
-                - VALIDATED
-                - REJECTED
-              type: string
-              readOnly: true
+    AttachmentMonoPart:
+      properties:
+        status:
+          enum:
+            - PENDING
+            - VALIDATED
+            - REJECTED
+          type: string
+          readOnly: true
+    # Attachment:
+    #   allOf:
+    #     - $ref: "#/components/schemas/AttachmentBase"
+    #     - properties:
+    #         status:
+    #           enum:
+    #             - PENDING
+    #             - VALIDATED
+    #             - REJECTED
+    #           type: string
+    #           readOnly: true
             # "@type":
             #   type: string
           # required:
@@ -166,10 +175,10 @@ components:
               "ISOSpeedRatings": 3200,
               "DateTimeOriginal": "2019-12-31T23:59:59Z",
             }
-    AttachmentImage:
-      allOf:
-        - $ref: "#/components/schemas/Attachment"
-        - $ref: "#/components/schemas/SpecialisationImage"
+    # AttachmentImage:
+    #   allOf:
+    #     - $ref: "#/components/schemas/Attachment"
+    #     - $ref: "#/components/schemas/SpecialisationImage"
         # - properties:
         #     "@type":
         #       type: string
@@ -187,44 +196,44 @@ components:
         - file
 
     AttachmentMultiPart:
-      allOf:
-        - $ref: "#/components/schemas/AttachmentBase"
-        - properties:
-            uploadExpectedChunks:
-              format: int32
-              type: integer
-              example: 3
-              description: The number of chunks expected to upload
-              readOnly: true
-            status:
-              enum:
-                - UPLOADING
-                - UPLOADED
-                - VALIDATED
-                - REJECTED
-              type: string
-              readOnly: true
-              description: The status of the attachment
-            uploadChunks:
-              readOnly: true
-              uniqueItems: true
-              type: array
-              description: The chunks uploaded
-              items:
-                $ref: "#/components/schemas/Chunk"
-            # "@type":
-            #   type: string
-              example: AttachmentMalfaconMultiPart
-          required:
-            - sha256
-            - name
-            - size
+      # allOf:
+      #   - $ref: "#/components/schemas/AttachmentBase"
+      properties:
+        # uploadExpectedChunks:
+        #   format: int32
+        #   type: integer
+        #   example: 3
+        #   description: The number of chunks expected to upload
+        #   readOnly: true
+        status:
+          enum:
+            - UPLOADING
+            - UPLOADED
+            - VALIDATED
+            - REJECTED
+          type: string
+          readOnly: true
+          description: The status of the attachment
+        uploadChunks:
+          readOnly: true
+          uniqueItems: true
+          type: array
+          description: The chunks uploaded
+          items:
+            $ref: "#/components/schemas/Chunk"
+        # "@type":
+        #   type: string
+          example: AttachmentMalfaconMultiPart
+      required:
+        - sha256
+        - name
+        # - size
             # - "@type"
 
-    AttachmentMultiPartImage:
-      allOf:
-        - $ref: "#/components/schemas/AttachmentMultiPart"
-        - $ref: "#/components/schemas/SpecialisationImage"
+    # AttachmentMultiPartImage:
+    #   allOf:
+    #     - $ref: "#/components/schemas/AttachmentMultiPart"
+    #     - $ref: "#/components/schemas/SpecialisationImage"
         # - properties:
         #     "@type":
         #       type: string
