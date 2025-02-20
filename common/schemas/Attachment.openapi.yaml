@@ -77,8 +77,8 @@ components:
               description: The SHA256 hash of the attachment.
               type: string
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
-      discriminator:
-        propertyName: "@type"
+      # discriminator:
+      #   propertyName: "@type"
 
     Attachment:
       allOf:
@@ -91,10 +91,10 @@ components:
                 - REJECTED
               type: string
               readOnly: true
-            "@type":
-              type: string
-          required:
-            - "@type"
+            # "@type":
+            #   type: string
+          # required:
+          #   - "@type"
 
     SpecialisationImage:
       properties:
@@ -170,11 +170,11 @@ components:
       allOf:
         - $ref: "#/components/schemas/Attachment"
         - $ref: "#/components/schemas/SpecialisationImage"
-        - properties:
-            "@type":
-              type: string
-          required:
-            - "@type"
+        # - properties:
+        #     "@type":
+        #       type: string
+        #   required:
+        #     - "@type"
 
 
     AttachmentFormData:
@@ -212,24 +212,24 @@ components:
               description: The chunks uploaded
               items:
                 $ref: "#/components/schemas/Chunk"
-            "@type":
-              type: string
+            # "@type":
+            #   type: string
               example: AttachmentMalfaconMultiPart
           required:
             - sha256
             - name
             - size
-            - "@type"
+            # - "@type"
 
     AttachmentMultiPartImage:
       allOf:
         - $ref: "#/components/schemas/AttachmentMultiPart"
         - $ref: "#/components/schemas/SpecialisationImage"
-        - properties:
-            "@type":
-              type: string
-          required:
-            - "@type"
+        # - properties:
+        #     "@type":
+        #       type: string
+        #   required:
+        #     - "@type"
 
     Chunk:
       type: object
