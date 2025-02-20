@@ -171,8 +171,8 @@ components:
         - $ref: "#/components/schemas/Attachment"
         - $ref: "#/components/schemas/SpecialisationImage"
         - properties:
-          "@type":
-            type: string
+            "@type":
+              type: string
           required:
             - "@type"
 
