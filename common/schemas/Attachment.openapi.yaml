@@ -91,6 +91,8 @@ components:
                 - REJECTED
               type: string
               readOnly: true
+            "@type":
+              type: string
           required:
             - "@type"
 
@@ -168,8 +170,12 @@ components:
       allOf:
         - $ref: "#/components/schemas/Attachment"
         - $ref: "#/components/schemas/SpecialisationImage"
-      required:
-        - "@type"
+        - properties:
+          "@type":
+            type: string
+          required:
+            - "@type"
+
 
     AttachmentFormData:
       properties:
@@ -219,6 +225,11 @@ components:
       allOf:
         - $ref: "#/components/schemas/AttachmentMultiPart"
         - $ref: "#/components/schemas/SpecialisationImage"
+        - properties:
+            "@type":
+              type: string
+          required:
+            - "@type"
 
     Chunk:
       type: object
