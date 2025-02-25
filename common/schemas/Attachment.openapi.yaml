@@ -30,9 +30,10 @@ components:
             status:
               type: object
               # description: Status of the attachment. This object has to be redefined in child schemas.
-              # readOnly: true
             statusChangeDetails:
+              type: string
               readOnly: true
+              description: The details of the status change.
             name:
               description: Name of the attachment.
               type: string
@@ -77,8 +78,6 @@ components:
               description: The SHA256 hash of the attachment.
               type: string
               example: 8cf1bc0fca7f4158b8eb807be15fd7fd21bfe52d956ce3ede1511671c97dad61
-      # discriminator:
-      #   propertyName: "@type"
 
     AttachmentMonoPart:
       properties:
@@ -89,21 +88,6 @@ components:
             - REJECTED
           type: string
           readOnly: true
-    # Attachment:
-    #   allOf:
-    #     - $ref: "#/components/schemas/AttachmentBase"
-    #     - properties:
-    #         status:
-    #           enum:
-    #             - PENDING
-    #             - VALIDATED
-    #             - REJECTED
-    #           type: string
-    #           readOnly: true
-            # "@type":
-            #   type: string
-          # required:
-          #   - "@type"
 
     SpecialisationImage:
       properties:
@@ -175,16 +159,6 @@ components:
               "ISOSpeedRatings": 3200,
               "DateTimeOriginal": "2019-12-31T23:59:59Z",
             }
-    # AttachmentImage:
-    #   allOf:
-    #     - $ref: "#/components/schemas/Attachment"
-    #     - $ref: "#/components/schemas/SpecialisationImage"
-        # - properties:
-        #     "@type":
-        #       type: string
-        #   required:
-        #     - "@type"
-
 
     AttachmentFormData:
       properties:
@@ -196,15 +170,7 @@ components:
         - file
 
     AttachmentMultiPart:
-      # allOf:
-      #   - $ref: "#/components/schemas/AttachmentBase"
       properties:
-        # uploadExpectedChunks:
-        #   format: int32
-        #   type: integer
-        #   example: 3
-        #   description: The number of chunks expected to upload
-        #   readOnly: true
         status:
           enum:
             - UPLOADING
@@ -221,24 +187,10 @@ components:
           description: The chunks uploaded
           items:
             $ref: "#/components/schemas/Chunk"
-        # "@type":
-        #   type: string
           example: AttachmentMalfaconMultiPart
       required:
         - sha256
         - name
-        # - size
-            # - "@type"
-
-    # AttachmentMultiPartImage:
-    #   allOf:
-    #     - $ref: "#/components/schemas/AttachmentMultiPart"
-    #     - $ref: "#/components/schemas/SpecialisationImage"
-        # - properties:
-        #     "@type":
-        #       type: string
-        #   required:
-        #     - "@type"
 
     Chunk:
       type: object
